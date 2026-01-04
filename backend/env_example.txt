@@ -1,0 +1,37 @@
+# 复制此文件为 .env 并修改配置
+
+# 数据库配置 (可以使用 SQLite 用于开发)
+# SQLite: sqlite:///./stockdaily.db
+# PostgreSQL: postgresql://postgres:postgres@localhost:5432/stockdaily
+DATABASE_URL=sqlite:///./stockdaily.db
+
+# Redis 配置 (定时任务用，可选)
+REDIS_URL=redis://localhost:6379
+
+# JWT 配置
+JWT_SECRET_KEY=your-super-secret-key-change-this-in-production
+JWT_ALGORITHM=HS256
+JWT_EXPIRE_MINUTES=10080
+
+# AI Builder API
+AI_BUILDER_TOKEN=your_ai_builder_token_here
+AI_BUILDER_API_URL=https://api.aibuilder.space/backend
+
+# 邮件配置 (SendGrid)
+SMTP_HOST=smtp.sendgrid.net
+SMTP_PORT=587
+SMTP_USER=apikey
+SMTP_PASSWORD=your_sendgrid_api_key
+FROM_EMAIL=noreply@stockdaily.com
+
+# 应用配置
+DEBUG=true
+
+# AI/外部请求并发控制（建议 2~5；越大越快，但更容易超时/被限流）
+MAX_CONCURRENT_AI_REQUESTS=3
+
+# 定时发送日报（默认关闭；开启后纽约时间每天 08:00 自动发送）
+ENABLE_DAILY_EMAIL_SCHEDULER=false
+DAILY_EMAIL_TIMEZONE=America/New_York
+DAILY_EMAIL_HOUR=8
+DAILY_EMAIL_MINUTE=0
