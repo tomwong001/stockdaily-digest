@@ -31,8 +31,8 @@ class Settings(BaseSettings):
     SMTP_PASSWORD: Optional[str] = None
     FROM_EMAIL: str = "noreply@stockdaily.com"
     
-    # 应用配置
-    DEBUG: bool = True
+    # 应用配置（生产环境默认关闭 DEBUG）
+    DEBUG: bool = False
 
     # AI/外部请求并发控制（避免 rate limit / 超时风暴）
     MAX_CONCURRENT_AI_REQUESTS: int = 3
