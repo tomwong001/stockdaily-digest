@@ -5,11 +5,11 @@ WORKDIR /frontend
 
 # Copy frontend files and install ALL dependencies (including devDependencies for build)
 COPY frontend/package*.json ./
-RUN npm ci
+RUN npm install
 
-# Copy source and build
+# Copy source and build (use npx to ensure binaries are found)
 COPY frontend/ ./
-RUN npm run build
+RUN npx tsc && npx vite build
 
 # Stage 2: Python backend with built frontend
 FROM python:3.11-slim
